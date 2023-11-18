@@ -13,6 +13,7 @@ export class visitorsController {
   teacherInfor(@Body() teacher:teacherInfoDto) {
     return teacher;
   }
+
   @Post('/messagesSend')
   @UsePipes(ValidationPipe)
   sendMessages(@Body() messages:messageDto) {
@@ -31,7 +32,7 @@ export class visitorsController {
   }
   @Post('/contactUs')
   @UsePipes(ValidationPipe)
-  contactUs ( @Body() contact:contactUsDto){
+  contactUs(@Body() contact:contactUsDto){
     return contact;
   }
   
