@@ -70,10 +70,10 @@ export class apply extends BaseEntity {
     @Column({
         type: 'varchar', 
     })
-    highSchoolName: string;
+    primarySchoolName: string;
 
     @Column({
         type: 'varchar', 
     })
-    gpa: number;
+    gpa: string;
 }

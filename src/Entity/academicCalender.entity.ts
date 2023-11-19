@@ -3,13 +3,13 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('academicCalender')
 export class academicCalender extends BaseEntity {
     @PrimaryGeneratedColumn({
+        comment: 'The academic Calender unique identifier'
     })
     id: number;
-
-    @Column({
-        type: 'varchar',
-    })
-    TitleOfCalendar: string;
+    @Column(
+        {type:'varchar',}
+    )
+    TitleOfCalender: string;
 
     @Column({
         type: 'integer',
@@ -27,7 +27,7 @@ export class academicCalender extends BaseEntity {
     Day: string;
 
     @Column({
-        type: 'varchar', 
+        type: 'varchar'
     })
     Description: string;
 }

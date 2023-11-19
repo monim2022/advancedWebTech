@@ -3,10 +3,9 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity('administrationInfo')
 export class administrationInfo extends BaseEntity {
     @PrimaryGeneratedColumn({
-        name: 'administratorID', 
         comment: 'The administrator Info unique identifier'
     })
-    administratorID: number;
+    id: number;
 
     @Column({
         type: 'varchar',
@@ -39,7 +38,7 @@ export class administrationInfo extends BaseEntity {
     Degree: string;
 
     @Column({
-        type: 'varchar',
+        type: 'varchar'
     })
     Award: string;
 }

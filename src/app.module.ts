@@ -12,7 +12,6 @@ import { apply } from './Entity/apply.entity';
 import { awardInfo } from './Entity/awardInfo.entity';
 import { careerInfo } from './Entity/careerInfo.entity';
 import { facilityInfo } from './Entity/facilityInfo.entity';
-import { messageSend } from './Entity/messageSend.entity';
 import { noticeView } from './Entity/noticeView.entity';
 import { research } from './Entity/research.entity';
 import { rules } from './Entity/rules.entity';
@@ -25,6 +24,7 @@ import { tutionFee } from './Entity/tutionFee.entity';
 import { viewLibrary } from './Entity/viewLibrary.entity';
 import { guestUser } from './Entity/guestUser.entity';
 import { visitorsService } from './visitors.service';
+import { admissionInfo } from './Entity/admissionInfo.entity';
 
 
 @Module({
@@ -37,12 +37,16 @@ import { visitorsService } from './visitors.service';
       password: '12345',
       database: 'visitor',
       entities: [guestUser,academicCalender,administrationInfo,alumniInfo,apply,
-        awardInfo,careerInfo,contactUs,facilityInfo,gellaryView,messageSend,
+        awardInfo,careerInfo,contactUs,facilityInfo,gellaryView,
         newsView,noticeView,research,rules,sportsInfo,tutionFee,
-        viewLibrary,viewVideos,teacherInfo,studentsInfo],
+        viewLibrary,viewVideos,teacherInfo,studentsInfo,admissionInfo],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([guestUser]),
+    TypeOrmModule.forFeature([
+      guestUser,academicCalender,administrationInfo,admissionInfo,alumniInfo,apply,awardInfo,careerInfo,
+      contactUs,facilityInfo,gellaryView,newsView,noticeView,research,rules,sportsInfo,studentsInfo,teacherInfo,
+      tutionFee,viewLibrary,viewVideos
+    ]),
 
   ],
   controllers: [visitorsController],

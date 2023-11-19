@@ -26,6 +26,24 @@ import { visitorsService } from './visitors.service';
 import { guestUser } from './Entity/guestUser.entity';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
+import { academicCalender } from './Entity/academicCalender.entity';
+import { administrationInfo } from './Entity/administrationInfo.entity';
+import { alumniInfo } from './Entity/alumniInfo.entity';
+import { admissionInfo } from './Entity/admissionInfo.entity';
+import { apply } from './Entity/apply.entity';
+import { awardInfo } from './Entity/awardInfo.entity';
+import { careerInfo } from './Entity/careerInfo.entity';
+import { contactUs } from './Entity/contactUs.entity';
+import { facilityInfo } from './Entity/facilityInfo.entity';
+import { viewLibrary } from './Entity/viewLibrary.entity';
+import { tutionFee } from './Entity/tutionFee.entity';
+import { teacherInfo } from './Entity/teacherInfo.entity';
+import { studentsInfo } from './Entity/studentsInfo.entity';
+import { sportsInfo } from './Entity/sportsInfo.entity';
+import { noticeView } from './Entity/noticeView.entity';
+import { newsView } from './Entity/newsView.entity';
+import { research } from './Entity/research.entity';
+import { rules } from './Entity/rules.entity';
 
 @Controller('/')
 export class visitorsController {
@@ -35,101 +53,119 @@ export class visitorsController {
 
   @Post('/guestUser')
   @UsePipes(ValidationPipe)
-  createGuestUser(@Body() guest: guestUser) {
+  createGuestUser(@Body() guest: guestUser){
     return this.VisitorService.createGuestUser(guest);
   }
 
   @Get('/guestUser')
-    findGuest(): Observable<guestUser[]>{
+    findGuest(){
       return this.VisitorService.findGuestUser();
-    }
-  
-
-    @Put('guest/:id')
-    @UsePipes(ValidationPipe)
-    async updateGuest(@Param('id') id: number, @Body() guest: any){
-      console.log(id)
-    console.log(guest)
-    return await this.visitorService.updateGuest(id, guest);
-}
-
-  @Delete(':id')
-  deleteGuestUser(@Param('id')id: number, @Body() guest:guestUser):Observable<DeleteResult>
-  {
-    
-    return this.visitorService.deleteGuestUser(id, guest);
   }
-
+  
   @Post('/academicCalender')
   @UsePipes(ValidationPipe)
-  viewAcademicCalender(@Body() calender:academicCalenderDto)
+  createAcademicCalender(@Body() calender:academicCalender)
   {
-    return calender;
+    return this.VisitorService.academicCalenderInfo(calender);
   }
-
+  @Get('/academicCalender')
+    viewCalender(){
+      return this.VisitorService.viewAcademicCalender();
+  }
+   
   @Post('/administration')
   @UsePipes(ValidationPipe)
-  viewAdministrationInfo(@Body() administration:administrationInfoDto)
+  viewAdministrationInfo(@Body() administration:administrationInfo)
   {
-    return administration;
+    return this.VisitorService.aministrationInfo(administration);
   }
+  @Get('/administration')
+  viewAdministration(){
+    return this.VisitorService.viewAdministrationInfo();
+}
+
 
   @Post('/admissionInfo')
   @UsePipes(ValidationPipe)
-  viewAdmissionInfo(@Body() admission:admissionInfoDto)
+  AdmissionInfo(@Body() admission:admissionInfo)
   {
-    return admission;
+    return this.VisitorService.admissionInfo(admission);
   }
+
+  @Get('/admissionInfo')
+  viewAdmissionInfo(){
+    return this.VisitorService.viewAdmissionInfo();
+}
+
+
   @Post('/alumniInfo')
   @UsePipes(ValidationPipe)
-  viewAlumniInfo(@Body() alumni:alumniInfoDto)
+  AlumniInfo(@Body() alumni:alumniInfo)
   {
-    return alumni;
+    return this.VisitorService.alumniInfo(alumni);
   }
+  @Get('/alumniInfo')
+  viewAlumniInfo(){
+    return this.VisitorService.viewAlumniInfo();
+}
+
 
   @Post('/applyForStudent')
   @UsePipes(ValidationPipe)
-  applyForStudent(@Body() apply:applyForStudentsDto)
+  applyStudent(@Body() apply:apply)
   {
-    return apply;
+    return this.VisitorService.applyForStudent(apply);
   }
-  @Put('/applyForStudent')
-  updateGuestInfo(@Body() apply:applyForStudentsDto)
-  {
-    return apply;
-  }
- @Delete('applyForStudent')
- DeleteGuestInfo(@Body() apply:applyForStudentsDto)
-  {
-    return apply;
-  }
+  @Get('/applyForStudent')
+  applyInfo(){
+    return this.VisitorService.getApplyInfo();
+}
+
+ 
   @Post('/award')
   @UsePipes(ValidationPipe)
-  awardAndAchievement(@Body() award: awardAndAchievmentDto)
+  awardAndAchievement(@Body() award:awardInfo)
   {
-    return award;
+    return this.VisitorService.awardInfo(award);
   }
+  @Get('/award')
+  awardView(){
+    return this.VisitorService.getAwardInfo();
+}
 
-  @Post('/apply')
+  @Post('/career')
   @UsePipes(ValidationPipe)
-  viewCareerInfo(@Body() career: careerInfoDto)
+  viewCareerInfo(@Body() career: careerInfo)
   {
-    return career;
+    return this.VisitorService.careerInfo(career);
   }
+  @Get('/career')
+  getCareer(){
+    return this.VisitorService.getCareerInfo();
+}
 
   @Post('/contactUs')
   @UsePipes(ValidationPipe)
-  contactUs(@Body() contact:contactUsDto){
-    return contact;
+  contactUs(@Body() contact:contactUs){
+    return this.VisitorService.contactUs(contact);
   }
+
+  @Get('/career')
+  getContact(){
+    return this.VisitorService.getContactUs();
+}
  
   @Post('/facilities')
   @UsePipes(ValidationPipe)
-  viewFacilities(@Body() facility: exploreFacilitiesDto)
+  viewFacilities(@Body() facility: facilityInfo)
   {
-    return facility;
+    return this.VisitorService.facilityInfo(facility);
   }
-
+  @Get('/facilities')
+  getFacility(){
+    return this.VisitorService.getFacilityInfo();
+}
+ 
   @Post('/uploadImage')
   @UseInterceptors(FileInterceptor('file', { 
     fileFilter: (req, file, cb) => {
@@ -147,79 +183,103 @@ export class visitorsController {
     }),
   }))
   uploadImage(@UploadedFile() image: Express.Multer.File) {
+
     console.log("Image successfully uploaded");
   }
 
-
-  
-  @Post('/messagesSend')
-  @UsePipes(ValidationPipe)
-  sendMessages(@Body() messages:messageDto) {
-    return messages;
-  }
-
-  @Delete('/deleteMessages')
-  deleteMessages(@Body() messages:messageDto) {
-    return messages;
-  }
-
-  @Get('/mail')
-  sendMail(): void {
-    return this.visitorsService.sendMail();
-  }
-
-
   @Post('/news')
   @UsePipes(ValidationPipe)
-  viewNews(@Body() news: newsViewDto) {
-    return news;
+  viewNews(@Body() news: newsView) {
+    return this.VisitorService.newsView(news);
   }
+  @Get('/news')
+  getNews(){
+    return this.VisitorService.getNews();
+}
 
   @Post('/notice')
   @UsePipes(ValidationPipe)
-  viewNotices(@Body() notice: noticeViewDto) {
-    return notice;
+  viewNotices(@Body() notice: noticeView) {
+    return this.VisitorService.noticeView(notice);
   }
+
+  @Get('/notice')
+  getNotice(){
+    return this.VisitorService.getNotice();
+}
 
   @Post('/research')
   @UsePipes(ValidationPipe)
-  viewRPublication(@Body() research: researchAndPublicationDto) {
-    return research;
+  viewRPublication(@Body() Research: research) {
+    return this.VisitorService.researchView(Research);
   }
+  @Get('/research')
+  getResearch(){
+    return this.VisitorService.getResearch();
+}
+
   @Post('/rules')
   @UsePipes(ValidationPipe)
-  viewSchoolRules(@Body() rules: rulesOfSchoolDto ) {
-    return rules;
+  viewSchoolRules(@Body() Rules: rules) {
+    return this.VisitorService.rulesView(Rules);
   }
+  @Get('/rules')
+  getRules(){
+    return this.VisitorService.getRules();
+}
 
   @Post('/sports')
   @UsePipes(ValidationPipe)
-  viewSports(@Body() sports: sportsDto) {
-    return sports;
+  viewSports(@Body() sports: sportsInfo) {
+    return this.VisitorService.sportsInfo(sports);
   }
+  @Get('/sports')
+  getSports(){
+    return this.VisitorService.getSports();
+}
 
-  @Post('/studentResultView')
+  @Post('/studentInfo')
   @UsePipes(ValidationPipe)
-  studentResultView(@Body() result:studentResultViewDto) {
-    return result;
+  studentResultView(@Body() result:studentsInfo) {
+    return this.VisitorService.studensInfo(result);
   }
 
-  @Get('/teacherInfo')
+  @Get('/studentsInfo')
+  getStudents(){
+    return this.VisitorService.getStudents();
+}
+
+  @Post('/teacherInfo')
   @UsePipes(ValidationPipe)
-  teacherInfor(@Body() teacher:teacherInfoDto) {
-    return teacher;
+  teacherInfor(@Body() teacher:teacherInfo) {
+    return this.VisitorService.teachersInfo(teacher);
   }
 
+ @Get('/teacherInfo')
+  getTeacher(){
+    return this.VisitorService.getTeachers();
+}
+  
   @Post('/tutionFee')
   @UsePipes(ValidationPipe)
-  viewTutionFee(@Body() tution: tutionFeeDto) {
-    return tution;
+  viewTutionFee(@Body() tution: tutionFee) {
+    return this.VisitorService.tutionFee(tution);
   }
+
+  @Get('/tutionFee')
+  getTution(){
+    return this.VisitorService.getTution();
+}
+  
   @Post('/library')
   @UsePipes(ValidationPipe)
-  viewLibraryInfo(@Body() library: viewLibraryDto) {
-    return library;
+  viewLibraryInfo(@Body() library: viewLibrary) {
+    return this.VisitorService.viewLibrary(library);
   }
+  @Get('/library')
+  getLibrary(){
+    return this.VisitorService.getLibrary();
+}
 
   @Post('/videos')
   @UsePipes(ValidationPipe)
