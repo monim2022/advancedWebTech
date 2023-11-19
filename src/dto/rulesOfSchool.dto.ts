@@ -1,6 +1,6 @@
 import { IsDate, IsNotEmpty, IsNumber, IsString } from "class-validator";
 
-export class noticeViewDto{
+export class rulesOfSchoolDto{
     
     @IsNotEmpty()
     @IsString()

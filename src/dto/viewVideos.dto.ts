@@ -1,6 +1,6 @@
 import { IsDate, IsNotEmpty, IsString } from "class-validator";
 
-export class gellaryDto{
+export class viewVideoDto{
     @IsNotEmpty()
     @IsString()
     video: string;

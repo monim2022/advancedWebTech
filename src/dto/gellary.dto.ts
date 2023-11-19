@@ -1,8 +1,7 @@
 import { IsDate, IsNotEmpty, IsString } from "class-validator";
 
 export class gellaryDto{
-    @IsNotEmpty()
-    image: ImageData;
+    
     @IsNotEmpty()
     @IsString()
     imageTitle: string;

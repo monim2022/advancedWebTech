@@ -6,7 +6,7 @@ export class alumniInfoDto{
     Name: string ;
     @IsNotEmpty()
     @IsNumber()
-    StudentId: string;
+    alumniId: string;
     @IsNotEmpty()
     @IsEmail()
     @IsString()

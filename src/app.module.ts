@@ -1,9 +1,51 @@
 import { Module } from '@nestjs/common';
-import { visitorsModule } from './visitors.module';
+import { MulterModule } from '@nestjs/platform-express';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { visitorsController } from './visitors.controller';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { teacherInfo } from './Entity/teacherInfo.entity';
+import { studentsInfo } from './Entity/studentsInfo.entity';
+import { academicCalender } from './Entity/academicCalender.entity';
+import { viewVideos } from './Entity/viewVideos.entity';
+import { alumniInfo } from './Entity/alumniInfo.entity';
+import { apply } from './Entity/apply.entity';
+import { awardInfo } from './Entity/awardInfo.entity';
+import { careerInfo } from './Entity/careerInfo.entity';
+import { facilityInfo } from './Entity/facilityInfo.entity';
+import { messageSend } from './Entity/messageSend.entity';
+import { noticeView } from './Entity/noticeView.entity';
+import { research } from './Entity/research.entity';
+import { rules } from './Entity/rules.entity';
+import { sportsInfo } from './Entity/sportsInfo.entity';
+import { administrationInfo } from './Entity/administrationInfo.entity';
+import { contactUs } from './Entity/contactUs.entity';
+import { gellaryView } from './Entity/gellaryView.entity';
+import { newsView } from './Entity/newsView.entity';
+import { tutionFee } from './Entity/tutionFee.entity';
+import { viewLibrary } from './Entity/viewLibrary.entity';
+import { guestUser } from './Entity/guestUser.entity';
+import { visitorsService } from './visitors.service';
+
 
 @Module({
-  imports: [visitorsModule],
-  controllers: [],
-  providers: [],
+  imports: [
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: '12345',
+      database: 'visitor',
+      entities: [guestUser,academicCalender,administrationInfo,alumniInfo,apply,
+        awardInfo,careerInfo,contactUs,facilityInfo,gellaryView,messageSend,
+        newsView,noticeView,research,rules,sportsInfo,tutionFee,
+        viewLibrary,viewVideos,teacherInfo,studentsInfo],
+      synchronize: true,
+    }),
+    TypeOrmModule.forFeature([guestUser]),
+
+  ],
+  controllers: [visitorsController],
+  providers: [visitorsService],
 })
 export class AppModule {}
