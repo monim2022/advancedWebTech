@@ -21,11 +21,14 @@ export default function AdministratorInfo() {
 
   return (
     <>
+    <div className="bg-slate-200 border-2 m-10 h-full">
+      <h1 className="text-center text-white text-2xl bg-sky-500">Students Facilities</h1>
       {AdminiData && (
 
 AdminiData.map(item => {
   return (
-    <div className="text-black" key={item.id}>
+    <div className="bg-slate-100 mt-4 border-green-100">
+  <div className="text-black text-center" key={item.id}>
 
     <p>Administrator Name: {item.Name}</p>
     <p>Administrator Email: {item.Email}</p>
@@ -37,10 +40,12 @@ AdminiData.map(item => {
 
 
   </div>
+  </div>
   )
 })
         
       )}
+      </div>
     </>
   );
 }

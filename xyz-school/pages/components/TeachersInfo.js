@@ -21,11 +21,17 @@ export default function TeachersInfo() {
 
   return (
     <>
+    <div className="bg-slate-200 border-2 m-5 h-80">
+
+<h1 className="text-center text-2xl bg-sky-500 text-white">Teachers Information</h1>
+
       {TeacherData && (
 
 TeacherData.map(item => {
   return (
-    <div className="text-black" key={item.id}>
+    <div className="bg-slate-100 mt-4 border-green-100">
+
+    <div className="text-black text-center" key={item.id}>
 
     <p>Teacher Name: {item.name}</p>
     <p>Teacher Email: {item.email}</p>
@@ -34,10 +40,12 @@ TeacherData.map(item => {
     <p>Teacher Position: {item.position}</p>
 
   </div>
+  </div>
   )
 })
         
       )}
+      </div>
     </>
   );
 }

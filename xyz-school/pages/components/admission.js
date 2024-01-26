@@ -21,21 +21,26 @@ export default function AdmissionFun() {
 
   return (
     <>
+    
+    <div className="bg-slate-200 border-2 m-10 h-96">
+      <h1 className="text-center text-white text-2xl bg-sky-500">Admission Information</h1>
       {quote && (
 
 quote.map(item => {
   return (
-    <div className="text-black" key={item.id}>
-
+    <div>
+    <div className="text-black text-center mt-5" key={item.id}>
     <p>Admission Start: {item.AdmissionStart}</p>
     <p>Admission End: {item.AdmissionEnd}</p>
     <p>Program: {item.Programm}</p>
-    {/* Add more properties as needed */}
   </div>
+  </div>
+
   )
 })
         
       )}
+      </div>
     </>
   );
 }

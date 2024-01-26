@@ -12,25 +12,31 @@ export default function NavBar() {
               </a>
           </div>
           <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+              
+              <div>
+                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us</h2>
+                  <ul class="text-black font-medium">
+                  <li class="mb-4">
+                          <a href="https://youtu.be/7z_EwP7AXaw?si=ItG5-D0davh05yAS" className="hover:underline ">BugsCoderIT</a>
+                      </li>
+                      <li class="mb-4">
+                          <a href="https://github.com/monim2022" className="hover:underline ">Github</a>
+                      </li>
+                    
+                      <li>
+                          <a href="https://www.linkedin.com/in/monim-mia" className="hover:underline">LinkdIN</a>
+                      </li>
+                  </ul>
+              </div>
+
               <div>
                   <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">Resources</h2>
                   <ul class= "text-gray-900 font-medium">
                       <li className="mb-4">
-                          <a href="https://flowbite.com/" className="hover:underline">Flowbite</a>
+                          <a href="https://flowbite.com/" className="hover:underline">FlowBite</a>
                       </li>
                       <li>
                           <a href="https://tailwindcss.com/" className="hover:underline">Tailwind CSS</a>
-                      </li>
-                  </ul>
-              </div>
-              <div>
-                  <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Follow us</h2>
-                  <ul class="text-black font-medium">
-                      <li class="mb-4">
-                          <a href="https://github.com/monim2022" className="hover:underline ">Github</a>
-                      </li>
-                      <li>
-                          <a href="https://www.linkedin.com/in/monim-mia" className="hover:underline">LinkdIN</a>
                       </li>
                   </ul>
               </div>

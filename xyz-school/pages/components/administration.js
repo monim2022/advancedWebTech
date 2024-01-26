@@ -21,27 +21,28 @@ export default function AdministratorInfo() {
 
   return (
     <>
-      {AdminiData && (
+
+    <div className="bg-slate-200 border-2 m-10 h-full">
+      <h1 className="text-center text-white text-2xl bg-sky-500">Administrator Information</h1>
+        {AdminiData && (
 
 AdminiData.map(item => {
-  return (
-    <div className="text-black" key={item.id}>
+return(
+  <div className="bg-slate-100 mt-4 border-green-100">
+  <div className="text-black text-center" key={item.id}>
 
-    <p>Administrator Name: {item.Name}</p>
-    <p>Administrator Email: {item.Email}</p>
-    <p>Administrator Contact: {item.Contact}</p>
-    <p>Administrator Address: {item.Address}</p>
-    <p>Administrator Position: {item.Position}</p>
-    <p>Administrator Degree: {item.Degree}</p>
-    <p>Administrator Award: {item.Award}</p>
-
-
+  <p>Administrator Name: {item.Name}</p>
+  <p>Administrator Email: {item.Email}</p>
+  <p>Administrator Contact: {item.Contact}</p>
+  <p>Administrator Address: {item.Address}</p>
+  <p>Administrator Position: {item.Position}</p>
+  </div>
   </div>
   )
-})
-        
-      )}
-    </>
-  );
-}
 
+
+})
+)}
+</div>
+</>
+)}

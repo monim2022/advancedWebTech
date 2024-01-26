@@ -12,7 +12,7 @@ export default function Login() {
   
     const handleLogin = async () => {
       try {
-        const response = await axios.post('http://localhost:3000/guestUser', { email, password });
+        const response = await axios.post('http://localhost:3000/signin', { email, password });
   
         if (response.data.success) {
           router.push('/components/student');

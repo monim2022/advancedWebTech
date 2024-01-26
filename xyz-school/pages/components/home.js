@@ -66,11 +66,10 @@ export default function Home() {
     <Videos/>
  </section>
 
- <section className='bg-slate-300 bg-opacity-25 absolute right-0 w-2/5 h-80 mt-5'>
- <div className='h-20 w-full object-cover bg-blue-700 bg-opacity-75'>
- <h1 className='text-center text-wrap text-white '>Recent Notices</h1>
-  <Notices/>
- </div>    
+ <section className='absolute right-0 w-2/5 h-80'>
+ 
+ <Notices/>
+
  </section>
 
 

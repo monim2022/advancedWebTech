@@ -21,6 +21,10 @@ export default function AdministratorInfo() {
 
   return (
     <>
+    <div className="bg-slate-200 border-2 m-5 h-80">
+
+<h1 className="text-center text-2xl bg-sky-500 text-white">Sports Information</h1>
+
       {AdminiData && (
 
 AdminiData.map(item => {
@@ -41,6 +45,7 @@ AdminiData.map(item => {
 })
         
       )}
+      </div>
     </>
   );
 }
